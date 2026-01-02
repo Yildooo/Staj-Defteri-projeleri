@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hava Durumu | 7 Günlük Tahmin</title>
+    <meta name="description" content="Şehir adına göre güncel hava durumu ve 7 günlük tahmin" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <h1>Hava Durumu</h1>
+        <p class="subtitle">Güncel ve 7 günlük tahmin</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="search">
+        <form id="search-form" autocomplete="off" novalidate>
+          <label for="city-input" class="sr-only">Şehir adı</label>
+          <input id="city-input" name="city" type="text" placeholder="Şehir adı girin (örn. Ankara)" required/>
+          <button id="search-btn" type="submit" aria-label="Hava durumunu getir">Getir</button>
+        </form>
+        <div class="toolbar">
+          <div class="unit-toggle" role="group" aria-label="Birim seçimi">
+            <button id="unit-c" type="button" class="toggle active">°C</button>
+            <button id="unit-f" type="button" class="toggle">°F</button>
+          </div>
+          <button id="loc-btn" type="button" class="btn-secondary" aria-label="Konumuma göre hava durumu">
+            Yakınımdaki Hava
+          </button>
+        </div>
+        <p id="message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section id="current" class="card hidden" aria-live="polite">
+        <div class="current">
+          <div class="current-left">
+            <img id="current-icon" class="weather-icon" alt="Hava durumu ikonu" />
+            <div>
+              <h2 id="location-name" class="location">—</h2>
+              <p id="current-desc" class="desc">—</p>
+            </div>
+          </div>
+          <div class="current-right">
+            <div class="temp"><span id="current-temp">—</span><sup id="temp-unit">°C</sup></div>
+            <ul class="metrics">
+              <li>Hissedilen: <strong id="feels-like">—</strong><span id="feels-like-unit">°C</span></li>
+              <li>Rüzgar: <strong id="wind">—</strong> <span id="wind-unit">m/sn</span></li>
+              <li>Nem: <strong id="humidity">—</strong>%</li>
+              <li>En yüksek/En düşük: <strong id="high-low">—</strong><span id="hl-unit">°C</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="hourly" class="hidden">
+        <h3>24 Saat</h3>
+        <div id="hourly-strip" class="hourly-strip" aria-live="polite"></div>
+      </section>
+
+      <section id="forecast" class="hidden">
+        <h3>7 Günlük Tahmin</h3>
+        <div id="forecast-grid" class="forecast-grid"></div>
+      </section>
+    </main>
+
+    <!-- Geliştirme için: API anahtarını config.local.js içinde tanımlayın (sadece lokal).
+         Üretimde anahtarı client’a koymayın; serverless proxy kullanın. -->
+    <script src="./config.local.js"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+  </html>

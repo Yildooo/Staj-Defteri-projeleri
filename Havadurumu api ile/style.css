@@ -1,0 +1,86 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+  --accent: #22c55e;
+  --danger: #ef4444;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+  color: var(--text); background: radial-gradient(1200px 600px at 10% -10%, #0ea5e9 0%, transparent 40%),
+          radial-gradient(1200px 600px at 110% 10%, #22c55e 0%, transparent 40%), var(--bg);
+}
+.container { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+.app-header { padding: 28px 0 8px; }
+.app-header h1 { margin: 0; font-size: 28px; }
+.subtitle { margin: 4px 0 0; color: var(--muted); }
+
+.search { margin: 20px 0 16px; }
+#search-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+#city-input {
+  padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(17,24,39,.6); color: var(--text); outline: none;
+}
+#city-input::placeholder { color: #9ca3af; }
+#search-btn { padding: 12px 16px; border: 0; border-radius: 12px; cursor: pointer; color: #062028;
+  background: linear-gradient(135deg, var(--primary), #60a5fa); font-weight: 700; box-shadow: var(--shadow);
+}
+#search-btn:disabled { opacity: .7; cursor: not-allowed; }
+.message { min-height: 22px; margin: 8px 2px 0; color: var(--muted); }
+.message.error { color: var(--danger); }
+.message.success { color: var(--accent); }
+
+/* toolbar */
+.toolbar { margin-top: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.unit-toggle { display: inline-flex; background: rgba(17,24,39,.6); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 4px; }
+.unit-toggle .toggle { background: transparent; color: var(--text); border: 0; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.unit-toggle .toggle.active { background: rgba(255,255,255,.12); font-weight: 700; }
+.btn-secondary { padding: 10px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(17,24,39,.6); color: var(--text); cursor: pointer; }
+.btn-secondary:hover { border-color: rgba(255,255,255,.2); }
+
+.card { background: rgba(17,24,39,.7); border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+  box-shadow: var(--shadow); padding: 18px; }
+.hidden { display: none !important; }
+
+.current { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+.current-left { display: flex; gap: 12px; align-items: center; }
+.location { margin: 0 0 2px; font-size: 20px; }
+.desc { margin: 0; color: var(--muted); text-transform: capitalize; }
+.temp { font-size: 42px; font-weight: 800; text-align: right; }
+.weather-icon { width: 72px; height: 72px; image-rendering: -webkit-optimize-contrast; }
+.metrics { list-style: none; margin: 8px 0 0; padding: 0; color: var(--muted); display: grid; gap: 6px; }
+
+#forecast { margin: 18px 0 40px; }
+#forecast h3 { margin: 18px 4px; font-size: 18px; color: var(--text); }
+.forecast-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.forecast-item { background: rgba(17,24,39,.6); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 12px; }
+.forecast-top { display: flex; align-items: center; gap: 10px; }
+.forecast-date { font-weight: 600; }
+.forecast-desc { color: var(--muted); text-transform: capitalize; }
+.forecast-temps { margin-top: 6px; display: flex; gap: 8px; font-weight: 700; }
+.temp-max { color: var(--text); }
+.temp-min { color: #9ca3af; }
+
+/* hourly */
+#hourly h3 { margin: 18px 4px; font-size: 18px; color: var(--text); }
+.hourly-strip { display: flex; gap: 10px; overflow-x: auto; padding: 8px 2px 12px; }
+.hourly-item { min-width: 80px; background: rgba(17,24,39,.6); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 10px; text-align: center; }
+.hourly-time { color: var(--muted); font-size: 12px; }
+.hourly-temp { font-weight: 800; margin-top: 4px; }
+.hourly-icon { width: 42px; height: 42px; }
+
+/* A11y */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+@media (min-width: 560px) {
+  .temp { font-size: 56px; }
+  .forecast-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 920px) {
+  .forecast-grid { grid-template-columns: repeat(7, 1fr); }
+}
