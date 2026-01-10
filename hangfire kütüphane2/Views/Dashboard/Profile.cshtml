@@ -1,0 +1,93 @@
+@model ApplicationUser
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-person-circle me-2"></i>My Profile</h4>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-3 text-center">
+                        <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 100px; height: 100px;">
+                            <span class="text-white display-5">@Model.FirstName[0]@Model.LastName[0]</span>
+                        </div>
+                        <h5 class="mb-0">@Model.FullName</h5>
+                        <p class="text-muted">Member since @Model.DateJoined.ToString("MMM yyyy")</p>
+                    </div>
+                    <div class="col-md-9">
+                        <form asp-action="UpdateProfile" method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" name="firstName" class="form-control" value="@Model.FirstName" required />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" name="lastName" class="form-control" value="@Model.LastName" required />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="@Model.Email" disabled />
+                                <small class="text-muted">Email cannot be changed</small>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Address</label>
+                                <input type="text" name="address" class="form-control" value="@Model.Address" placeholder="Enter your address" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-lg me-2"></i>Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-header bg-transparent">
+                <h5 class="mb-0"><i class="bi bi-info-circle text-info me-2"></i>Account Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <small class="text-muted d-block">Account Status</small>
+                        @if (Model.IsActive)
+                        {
+                            <span class="badge bg-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Inactive</span>
+                        }
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <small class="text-muted d-block">Email Verified</small>
+                        @if (Model.EmailConfirmed)
+                        {
+                            <span class="badge bg-success">Verified</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">Not Verified</span>
+                        }
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <small class="text-muted d-block">User ID</small>
+                        <code>@Model.Id</code>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <small class="text-muted d-block">Member Since</small>
+                        <strong>@Model.DateJoined.ToString("MMMM dd, yyyy")</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

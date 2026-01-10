@@ -1,0 +1,78 @@
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-book display-1 text-primary"></i>
+                    <h1 class="fw-bold mt-3">About Our Library</h1>
+                </div>
+
+                <p class="lead text-center text-muted mb-5">
+                    Welcome to the Library Management System - your gateway to knowledge and discovery.
+                </p>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 bg-light">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-building display-4 text-primary mb-3"></i>
+                                <h5 class="fw-bold">Our Mission</h5>
+                                <p class="text-muted mb-0">
+                                    To provide free access to books and educational resources for all members of our community.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 bg-light">
+                            <div class="card-body text-center p-4">
+                                <i class="bi bi-people display-4 text-primary mb-3"></i>
+                                <h5 class="fw-bold">Our Community</h5>
+                                <p class="text-muted mb-0">
+                                    We serve thousands of members with a diverse collection of books across all genres.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-5">
+
+                <h4 class="fw-bold mb-4">Library Features</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle text-success me-3"></i>
+                        Browse our extensive collection of books online
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle text-success me-3"></i>
+                        Borrow up to 5 books at a time
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle text-success me-3"></i>
+                        Receive email reminders for due dates
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle text-success me-3"></i>
+                        Track your borrowing history
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle text-success me-3"></i>
+                        Manage your account online
+                    </li>
+                </ul>
+
+                <div class="text-center mt-5">
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Become a Member
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,135 @@
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-center py-5 mb-5 bg-gradient rounded-3">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-primary mb-3">
+            <i class="bi bi-book me-2"></i>Welcome to Library Management
+        </h1>
+        <p class="lead text-muted mb-4">
+            Discover, borrow, and explore thousands of books from our collection.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a asp-controller="Books" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="bi bi-search me-2"></i>Browse Books
+            </a>
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-person-plus me-2"></i>Join Now
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="stats-section mb-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-book display-4 text-primary mb-3"></i>
+                    <h3 class="fw-bold">@ViewBag.TotalBooks</h3>
+                    <p class="text-muted mb-0">Total Books</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-check-circle display-4 text-success mb-3"></i>
+                    <h3 class="fw-bold">@ViewBag.AvailableBooks</h3>
+                    <p class="text-muted mb-0">Available Now</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-people display-4 text-info mb-3"></i>
+                    <h3 class="fw-bold">@ViewBag.TotalMembers</h3>
+                    <p class="text-muted mb-0">Members</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Books Section -->
+<section class="featured-section mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0"><i class="bi bi-star me-2"></i>Featured Books</h2>
+        <a asp-controller="Books" asp-action="Index" class="btn btn-outline-primary">
+            View All <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+    </div>
+    
+    <div class="row g-4">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 col-lg-2">
+                <div class="card h-100 book-card border-0 shadow-sm">
+                    <div class="book-cover-container">
+                        @if (!string.IsNullOrEmpty(book.CoverImageUrl))
+                        {
+                            <img src="@book.CoverImageUrl" class="card-img-top book-cover" alt="@book.Title">
+                        }
+                        else
+                        {
+                            <div class="card-img-top book-cover-placeholder d-flex align-items-center justify-content-center">
+                                <i class="bi bi-book display-4 text-muted"></i>
+                            </div>
+                        }
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title fw-bold text-truncate" title="@book.Title">@book.Title</h6>
+                        <p class="card-text text-muted small mb-2">@book.Author</p>
+                        <div class="mt-auto">
+                            @if (book.IsAvailable)
+                            {
+                                <span class="badge bg-success">Available</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Unavailable</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a asp-controller="Books" asp-action="Details" asp-route-id="@book.Id" 
+                           class="btn btn-sm btn-outline-primary w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section py-5 bg-light rounded-3">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Why Choose Our Library?</h2>
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <i class="bi bi-clock-history display-4 text-primary mb-3"></i>
+                <h5 class="fw-bold">24/7 Access</h5>
+                <p class="text-muted">Browse and manage your books anytime, anywhere.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-bell display-4 text-primary mb-3"></i>
+                <h5 class="fw-bold">Smart Reminders</h5>
+                <p class="text-muted">Get notified before your due dates.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                <h5 class="fw-bold">Secure Account</h5>
+                <p class="text-muted">Your information is safe with us.</p>
+            </div>
+        </div>
+    </div>
+</section>
+

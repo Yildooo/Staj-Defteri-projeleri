@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <h1 class="fw-bold mb-4"><i class="bi bi-shield-check text-primary me-2"></i>Privacy Policy</h1>
+                <p class="text-muted">Last updated: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+
+                <hr class="my-4">
+
+                <h5 class="fw-bold">Information We Collect</h5>
+                <p>We collect information you provide directly to us, including:</p>
+                <ul>
+                    <li>Name and email address when you create an account</li>
+                    <li>Borrowing history and library usage data</li>
+                    <li>Any communications you have with us</li>
+                </ul>
+
+                <h5 class="fw-bold mt-4">How We Use Your Information</h5>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide and maintain our library services</li>
+                    <li>Send you notifications about due dates and overdue books</li>
+                    <li>Communicate with you about your account</li>
+                    <li>Improve our services</li>
+                </ul>
+
+                <h5 class="fw-bold mt-4">Data Security</h5>
+                <p>
+                    We take reasonable measures to help protect your personal information from loss, 
+                    theft, misuse, and unauthorized access. Your password is encrypted and never stored in plain text.
+                </p>
+
+                <h5 class="fw-bold mt-4">Your Rights</h5>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your personal information</li>
+                    <li>Update or correct your information</li>
+                    <li>Request deletion of your account</li>
+                </ul>
+
+                <h5 class="fw-bold mt-4">Contact Us</h5>
+                <p>
+                    If you have any questions about this Privacy Policy, please contact us at 
+                    <a href="mailto:privacy@library.com">privacy@library.com</a>.
+                </p>
+
+                <div class="text-center mt-5">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

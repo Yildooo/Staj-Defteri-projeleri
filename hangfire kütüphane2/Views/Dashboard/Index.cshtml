@@ -1,0 +1,135 @@
+@model UserDashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Welcome, @Model.User.FirstName!</h1>
+        <p class="text-muted mb-0">Here's your library activity overview.</p>
+    </div>
+    <a asp-controller="Books" asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-book me-2"></i>Browse Books
+    </a>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-bookmark-check display-4 text-primary mb-2"></i>
+                <h3 class="fw-bold mb-1">@Model.CurrentBorrows.Count</h3>
+                <p class="text-muted mb-0">Currently Borrowed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-clock-history display-4 text-info mb-2"></i>
+                <h3 class="fw-bold mb-1">@Model.TotalBooksBorrowed</h3>
+                <p class="text-muted mb-0">Total Books Borrowed</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm h-100 @(Model.OverdueBooks > 0 ? "border-danger" : "")">
+            <div class="card-body text-center">
+                <i class="bi bi-exclamation-triangle display-4 @(Model.OverdueBooks > 0 ? "text-danger" : "text-success") mb-2"></i>
+                <h3 class="fw-bold mb-1">@Model.OverdueBooks</h3>
+                <p class="text-muted mb-0">Overdue Books</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm h-100 @(Model.TotalFines > 0 ? "border-warning" : "")">
+            <div class="card-body text-center">
+                <i class="bi bi-currency-dollar display-4 @(Model.TotalFines > 0 ? "text-warning" : "text-success") mb-2"></i>
+                <h3 class="fw-bold mb-1">$@Model.TotalFines.ToString("F2")</h3>
+                <p class="text-muted mb-0">Outstanding Fines</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Current Borrows -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-bookmark-fill text-primary me-2"></i>Currently Borrowed</h5>
+                <a asp-action="MyBooks" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                @if (Model.CurrentBorrows.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var borrow in Model.CurrentBorrows.Take(5))
+                        {
+                            <div class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">@borrow.Book?.Title</h6>
+                                    <small class="text-muted">Due: @borrow.DueDate.ToString("MMM dd, yyyy")</small>
+                                </div>
+                                @if (borrow.IsOverdue)
+                                {
+                                    <span class="badge bg-danger">Overdue</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-4">
+                        <i class="bi bi-inbox display-4 text-muted"></i>
+                        <p class="text-muted mt-2">No books currently borrowed</p>
+                        <a asp-controller="Books" asp-action="Index" class="btn btn-primary btn-sm">Browse Books</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent History -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-clock-history text-info me-2"></i>Recent Returns</h5>
+                <a asp-action="History" class="btn btn-sm btn-outline-info">View All</a>
+            </div>
+            <div class="card-body">
+                @if (Model.BorrowHistory.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var record in Model.BorrowHistory.Take(5))
+                        {
+                            <div class="list-group-item px-0">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">@record.Book?.Title</h6>
+                                        <small class="text-muted">Returned: @record.ReturnDate?.ToString("MMM dd, yyyy")</small>
+                                    </div>
+                                    <span class="badge bg-secondary">Returned</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-4">
+                        <i class="bi bi-clock display-4 text-muted"></i>
+                        <p class="text-muted mt-2">No borrowing history yet</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
