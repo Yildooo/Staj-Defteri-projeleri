@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.site-header {
+    background: linear-gradient(135deg, #c45c26, #e07b39);
+    color: #fff;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 1.75rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.tagline {
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+.recipe-list {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.recipe-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card h2 a {
+    color: #c45c26;
+    text-decoration: none;
+}
+
+.recipe-card h2 a:hover {
+    text-decoration: underline;
+}
+
+.recipe-meta {
+    display: flex;
+    gap: 1rem;
+    margin: 0.75rem 0 1rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    background: #c45c26;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: #a34a1d;
+}
+
+.recipe-detail {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #c45c26;
+    text-decoration: none;
+}
+
+.recipe-desc {
+    margin: 1rem 0 1.5rem;
+    font-size: 1.05rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.recipe-grid h2 {
+    color: #c45c26;
+    margin-bottom: 0.75rem;
+}
+
+.ingredient-list,
+.steps-list {
+    padding-left: 1.25rem;
+}
+
+.ingredient-list li,
+.steps-list li {
+    margin-bottom: 0.5rem;
+}
+
+.error-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.empty-message {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+code {
+    background: #eee;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+}
+
+@media (max-width: 700px) {
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+}
