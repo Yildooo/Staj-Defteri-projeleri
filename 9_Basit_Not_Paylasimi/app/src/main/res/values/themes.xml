@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BasitNotPaylasimi" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/vurgu_renk</item>
+        <item name="colorPrimaryVariant">@color/baslik_renk</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/vurgu_renk</item>
+    </style>
+</resources>

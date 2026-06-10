@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Basit Not Paylaşımı</string>
+    <string name="uygulama_baslik">Notlarım</string>
+    <string name="baslik_hint">Not başlığı</string>
+    <string name="icerik_hint">Not içeriğini yazın…</string>
+    <string name="kaydet">Kaydet</string>
+    <string name="iptal">İptal</string>
+    <string name="paylas">Paylaş</string>
+    <string name="sil">Sil</string>
+    <string name="yeni_not_ekle">Yeni not ekle</string>
+    <string name="paylas_baslik">Notu paylaş</string>
+    <string name="bos_liste_mesaji">Henüz not yok. + butonuna basarak yeni not ekleyin.</string>
+    <string name="not_kaydedildi">Not kaydedildi</string>
+    <string name="not_silindi">Not silindi</string>
+    <string name="hata_baslik_bos">Başlık boş olamaz</string>
+    <string name="hata_icerik_bos">İçerik boş olamaz</string>
+</resources>

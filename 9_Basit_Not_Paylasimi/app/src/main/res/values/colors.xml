@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="arka_plan">#F5F5F5</color>
+    <color name="baslik_renk">#1A237E</color>
+    <color name="ana_metin">#212121</color>
+    <color name="ikincil_metin">#757575</color>
+    <color name="vurgu_renk">#3949AB</color>
+    <color name="sil_renk">#C62828</color>
+    <color name="kart_arkaplan">#FFFFFF</color>
+</resources>
